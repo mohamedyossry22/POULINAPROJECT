@@ -7,6 +7,10 @@ import { ProductsDetailsComponent } from './products/components/products-details
 const routes: Routes = [
   {path:"products", component:AllProductsComponent},
   {path:"datails", component:ProductsDetailsComponent},
+  {
+    path:'products',
+    loadChildren:() => import('./products/products.module').then(m => m.ProductsModule)
+  },
   {path:"carts", component:CartComponent},
   {path:"**",redirectTo:"products",pathMatch:"full"},
 ];
