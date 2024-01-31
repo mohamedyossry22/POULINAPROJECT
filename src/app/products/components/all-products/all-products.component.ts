@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductsService } from '../../services/products.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-all-products',
@@ -9,7 +10,7 @@ import { ProductsService } from '../../services/products.service';
 export class AllProductsComponent implements OnInit{
 
   products:any[]=[]
-  constructor(private service:ProductsService){}
+  constructor(private service:ProductsService , private router:Router){}
   ngOnInit(): void {
     this.getProducts()
   }
@@ -19,5 +20,9 @@ export class AllProductsComponent implements OnInit{
     })
   }
 
+
+  routeToDetails(id:any) {
+    this.router.navigateByUrl('/products/'+id)
+  }
 
 }
