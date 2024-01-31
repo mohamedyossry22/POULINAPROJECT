@@ -4,26 +4,21 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
-import { HttpClientModule, HttpClient } from '@angular/common/http';
-import { provideHttpClient, withFetch } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [
+    AppComponent
+  ],
   imports: [
+    CommonModule,
     BrowserModule,
     AppRoutingModule,
     SharedModule,
-    HttpClientModule,
+    HttpClientModule,    
   ],
-  providers: [
-    // Corrected provideHttpClient configuration
-    provideHttpClient({
-      useFactory: withFetch,
-      deps: [HttpClient],  // Add the appropriate dependency (HttpClient in this case)
-    }),
-
-    // Add other providers as needed
-  ],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
